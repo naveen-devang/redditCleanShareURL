@@ -1,21 +1,23 @@
 // ==UserScript==
 // @name         Reddit Share Link Cleaner
-// @namespace    http://tampermonkey.net/
-// @version      1.1
+// @namespace    https://github.com/naveen-devang/redditCleanShareURL/
+// @version      1.0
 // @description  Auto-strip UTM trackers from Reddit share links on copy
-// @author       You (adapted from UTM stripper gists)
+// @author       Naveen Devang
+// @license      MIT
 // @match        https://*.reddit.com/*
 // @grant        none
+// @updateURL    https://raw.githubusercontent.com/naveen-devang/redditCleanShareURL/main/user.js
 // ==/UserScript==
 
 (function() {
     'use strict';
 
     function cleanUrl(url) {
-        return url.split('?')[0].replace(/\/+$/, ''); // Strips query params and trailing slashes
+        return url.split('?')[0].replace(/\/*$/, '/'); // Strips query params and ensures one trailing slash
     }
 
-    // Override navigator.clipboard.writeText if available
+    // Override navigator.clipboard.writeText if available (modern browsers)
     const originalWriteText = navigator.clipboard.writeText;
     navigator.clipboard.writeText = async function(text) {
         if (window.location.hostname.includes('reddit.com') && text.includes('utm_')) {
