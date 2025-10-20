@@ -12,3 +12,5 @@ Also handles by removing trackers like /s/ from the links.
 Works on all Reddit posts, with no manual editing needed.
 
 Lightweight, open-source, and compatible with modern browsers via Tampermonkey/Violentmonkey.
+
+[Click me to install the script from greasyfork](https://greasyfork.org/en/scripts/552667-reddit-share-link-cleaner)
